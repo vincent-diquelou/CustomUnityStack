@@ -2,6 +2,8 @@ BLUE='\033[1;34m'
 GREEN='\033[1;32m'
 NC='\033[0m' # No Color
 REPO="https://github.com/vincent-diquelou/CustomUnityStack.git/trunk/"
+RAW_REPO="https://raw.githubusercontent.com/vincent-diquelou/CustomUnityStack/main/"
+
 echo -e "${BLUE}===== Creating folders ... =====${NC}"
 mkdir Assets/2D/
 mkdir Assets/2D/Atlas/
@@ -19,7 +21,7 @@ mkdir Assets/Audio/
 echo -e "${GREEN}===== Folders created =====${NC}"
 
 echo -e "${BLUE}===== Downloading .gitignore ... =====${NC}"
-wget "https://vincent-diquelou.github.io/others/UnityTools/UNITY.gitignore" -O .gitignore
+wget "${RAW_REPO}UNITY.gitignore" -O .gitignore
 echo -e "${GREEN}===== .gitignore downloaded =====${NC}"
 
 echo -e "${BLUE}===== Downloading Utils scrips folder ... =====${NC}"
@@ -44,4 +46,10 @@ echo -e "${BLUE}===== Downloading ExternalAssets folder ... =====${NC}"
 git svn clone -r HEAD "${REPO}/ExternalAssets"
 rm -rf ExternalAssets/.git
 mv ExternalAssets/ Assets/
-echo -e "${GREEN}===== Tools ExternalAssets downloaded =====${NC}"
+echo -e "${GREEN}===== ExternalAssets downloaded =====${NC}"
+
+echo -e "${BLUE}===== Downloading DebugMaterials folder ... =====${NC}"
+git svn clone -r HEAD "${REPO}/DebugMaterials"
+rm -rf DebugMaterials/.git
+mv DebugMaterials/ Assets/3D/Materials/
+echo -e "${GREEN}===== DebugMaterials downloaded =====${NC}"
