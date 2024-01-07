@@ -1,6 +1,7 @@
 BLUE='\033[1;34m'
 GREEN='\033[1;32m'
 NC='\033[0m' # No Color
+REPO="https://github.com/vincent-diquelou/CustomUnityStack.git/trunk/"
 echo -e "${BLUE}===== Creating folders ... =====${NC}"
 mkdir Assets/2D/
 mkdir Assets/2D/Atlas/
@@ -22,25 +23,25 @@ wget "https://vincent-diquelou.github.io/others/UnityTools/UNITY.gitignore" -O .
 echo -e "${GREEN}===== .gitignore downloaded =====${NC}"
 
 echo -e "${BLUE}===== Downloading Utils scrips folder ... =====${NC}"
-git svn clone "https://github.com/vincent-diquelou/vincent-diquelou.github.io/trunk/others/UnityTools/Utils"
+git svn clone -r HEAD "${REPO}/Utils"
 rm -rf Utils/.git
 mv Utils/ Assets/Scripts/
 echo -e "${GREEN}===== Utils scrips folder downloaded =====${NC}"
 
 echo -e "${BLUE}===== Downloading Tools folder ... =====${NC}"
-git svn clone "https://github.com/vincent-diquelou/vincent-diquelou.github.io/trunk/others/UnityTools/Tools"
+git svn clone -r HEAD "${REPO}/Tools"
 rm -rf Tools/.git
 mv Tools/ Assets/Scripts/
 echo -e "${GREEN}===== Tools folder downloaded =====${NC}"
 
 echo -e "${BLUE}===== Downloading Plugins folder ... =====${NC}"
-git svn clone "https://github.com/vincent-diquelou/vincent-diquelou.github.io/trunk/others/UnityTools/Plugins"
+git svn clone -r HEAD "${REPO}/Plugins"
 rm -rf Plugins/.git
 mv Plugins/ Assets/
 echo -e "${GREEN}===== Tools Plugins downloaded =====${NC}"
 
 echo -e "${BLUE}===== Downloading ExternalAssets folder ... =====${NC}"
-git svn clone "https://github.com/vincent-diquelou/vincent-diquelou.github.io/trunk/others/UnityTools/ExternalAssets"
+git svn clone -r HEAD "${REPO}/ExternalAssets"
 rm -rf ExternalAssets/.git
 mv ExternalAssets/ Assets/
 echo -e "${GREEN}===== Tools ExternalAssets downloaded =====${NC}"
