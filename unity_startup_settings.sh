@@ -4,7 +4,16 @@ NC='\033[0m' # No Color
 REPO="https://github.com/vincent-diquelou/CustomUnityStack.git/trunk/"
 RAW_REPO="https://raw.githubusercontent.com/vincent-diquelou/CustomUnityStack/main/"
 
+echo -e "${BLUE}===== Deleting folders ... =====${NC}"
+
+rm -rf Assets/Scripts/Utils/
+rm -rf Assets/Scripts/Tools/
+rm -rf Assets/Plugins/
+rm -rf Assets/ExternalAssets/
+rm -rf Assets/3D/Materials/
+
 echo -e "${BLUE}===== Creating folders ... =====${NC}"
+
 mkdir Assets/2D/
 mkdir Assets/2D/Atlas/
 mkdir Assets/2D/Textures/
@@ -20,36 +29,16 @@ mkdir Assets/Scripts/Editor/
 mkdir Assets/Audio/
 echo -e "${GREEN}===== Folders created =====${NC}"
 
-echo -e "${BLUE}===== Downloading .gitignore ... =====${NC}"
 wget "${RAW_REPO}UNITY.gitignore" -O .gitignore
+echo -e "${BLUE}===== Downloading .gitignore ... =====${NC}"
 echo -e "${GREEN}===== .gitignore downloaded =====${NC}"
 
-echo -e "${BLUE}===== Downloading Utils scrips folder ... =====${NC}"
-git svn clone -r HEAD "${REPO}/Utils"
-rm -rf Utils/.git
-mv Utils/ Assets/Scripts/
-echo -e "${GREEN}===== Utils scrips folder downloaded =====${NC}"
+git clone --depth 1 https://github.com/vincent-diquelou/CustomUnityStack
 
-echo -e "${BLUE}===== Downloading Tools folder ... =====${NC}"
-git svn clone -r HEAD "${REPO}/Tools"
-rm -rf Tools/.git
-mv Tools/ Assets/Scripts/
-echo -e "${GREEN}===== Tools folder downloaded =====${NC}"
+mv CustomUnityStack/Utils/ Assets/Scripts/
+mv CustomUnityStack/Tools/ Assets/Scripts/
+mv CustomUnityStack/Plugins/ Assets/
+mv CustomUnityStack/ExternalAssets/ Assets/
+mv CustomUnityStack/DebugMaterials/ Assets/3D/Materials/
 
-echo -e "${BLUE}===== Downloading Plugins folder ... =====${NC}"
-git svn clone -r HEAD "${REPO}/Plugins"
-rm -rf Plugins/.git
-mv Plugins/ Assets/
-echo -e "${GREEN}===== Tools Plugins downloaded =====${NC}"
-
-echo -e "${BLUE}===== Downloading ExternalAssets folder ... =====${NC}"
-git svn clone -r HEAD "${REPO}/ExternalAssets"
-rm -rf ExternalAssets/.git
-mv ExternalAssets/ Assets/
-echo -e "${GREEN}===== ExternalAssets downloaded =====${NC}"
-
-echo -e "${BLUE}===== Downloading DebugMaterials folder ... =====${NC}"
-git svn clone -r HEAD "${REPO}/DebugMaterials"
-rm -rf DebugMaterials/.git
-mv DebugMaterials/ Assets/3D/Materials/
-echo -e "${GREEN}===== DebugMaterials downloaded =====${NC}"
+rm -rf CustomUnityStack
